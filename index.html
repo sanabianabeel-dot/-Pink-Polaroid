@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pink Paradise | Beach Photo Booth</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    color: #5a3d4a;
+}
+
+
+/* =====================================================
+   BEACH WORLD
+===================================================== */
+
+.beach {
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #9edff2 0%,
+            #bdebf5 52%,
+            #65c9df 52%,
+            #65c9df 69%,
+            #f8dfad 69%,
+            #f8dfad 100%
+        );
+}
+
+
+/* =====================================================
+   SUN
+===================================================== */
+
+.sun {
+    position: absolute;
+
+    top: 50px;
+    right: 8%;
+
+    width: 95px;
+    height: 95px;
+
+    border-radius: 50%;
+
+    background: #ffe69c;
+
+    box-shadow:
+        0 0 20px #ffe69c,
+        0 0 55px rgba(255,230,156,0.7);
+
+    z-index: 1;
+}
+
+
+/* =====================================================
+   CLOUDS
+===================================================== */
+
+.cloud {
+    position: absolute;
+
+    width: 140px;
+    height: 45px;
+
+    background: white;
+
+    border-radius: 50px;
+
+    opacity: 0.85;
+
+    z-index: 1;
+}
+
+.cloud::before {
+    content: "";
+
+    position: absolute;
+
+    width: 60px;
+    height: 60px;
+
+    left: 20px;
+    bottom: 12px;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    right: 18px;
+    bottom: 8px;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+
+.cloud1 {
+    top: 100px;
+    left: -200px;
+
+    animation:
+        cloudMove 35s linear infinite;
+}
+
+
+.cloud2 {
+    top: 190px;
+    left: -300px;
+
+    transform: scale(0.75);
+
+    animation:
+        cloudMove 45s linear infinite;
+
+    animation-delay: 8s;
+}
+
+
+.cloud3 {
+    top: 70px;
+    left: -350px;
+
+    transform: scale(0.5);
+
+    animation:
+        cloudMove 55s linear infinite;
+
+    animation-delay: 15s;
+}
+
+
+@keyframes cloudMove {
+
+    from {
+        left: -250px;
+    }
+
+    to {
+        left: 110%;
+    }
+
+}
+
+
+/* =====================================================
+   OCEAN
+===================================================== */
+
+.ocean {
+    position: absolute;
+
+    top: 52%;
+    left: 0;
+
+    width: 100%;
+    height: 17%;
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+
+/* =====================================================
+   WAVES
+===================================================== */
+
+.wave {
+    position: absolute;
+
+    left: -10%;
+
+    width: 120%;
+
+    height: 35px;
+
+    background: rgba(255,255,255,0.45);
+
+    border-radius: 50%;
+
+    animation:
+        waveMove 5s ease-in-out infinite alternate;
+}
+
+.wave1 {
+    top: 10px;
+}
+
+.wave2 {
+    top: 45px;
+
+    opacity: 0.3;
+
+    animation-delay: 1s;
+}
+
+.wave3 {
+    top: 80px;
+
+    opacity: 0.2;
+
+    animation-delay: 2s;
+}
+
+
+@keyframes waveMove {
+
+    from {
+        transform: translateX(-3%);
+    }
+
+    to {
+        transform: translateX(3%);
+    }
+
+}
+
+
+/* =====================================================
+   SAND
+===================================================== */
+
+.sand {
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 31%;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255,255,255,0.25) 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 70% 60%,
+            rgba(180,130,80,0.12) 0 2px,
+            transparent 3px
+        ),
+        #f8dfad;
+
+    background-size: 80px 80px;
+
+    border-radius:
+        50% 50% 0 0 /
+        12% 12% 0 0;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    position: relative;
+
+    z-index: 10;
+
+    text-align: center;
+
+    padding-top: 30px;
+
+    color: white;
+}
+
+
+.header h1 {
+    font-size: 44px;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 4px 0 #f45b91,
+        0 7px 18px rgba(0,0,0,0.12);
+}
+
+
+.header p {
+    margin-top: 7px;
+
+    font-size: 17px;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 35px;
+
+    margin-top: 25px;
+
+    padding-bottom: 120px;
+}
+
+
+/* =====================================================
+   PHOTO BOOTH
+===================================================== */
+
+.photo-booth {
+
+    width: 460px;
+
+    padding: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffb1cd,
+            #ff91b9
+        );
+
+    border: 8px solid white;
+
+    border-radius: 32px;
+
+    box-shadow:
+        0 20px 45px rgba(90,61,74,0.25);
+
+    position: relative;
+}
+
+
+/* =====================================================
+   BOOTH HEADER
+===================================================== */
+
+.booth-header {
+
+    background:
+        linear-gradient(
+            90deg,
+            #f45b91,
+            #ff78aa
+        );
+
+    color: white;
+
+    text-align: center;
+
+    padding: 14px;
+
+    border-radius: 17px;
+
+    margin-bottom: 20px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        inset 0 -3px 0 rgba(0,0,0,0.08);
+}
+
+
+/* =====================================================
+   CAMERA
+===================================================== */
+
+.camera-area {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #493943;
+
+    border-radius: 19px;
+
+    border: 5px solid white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,0.25);
+}
+
+
+#camera {
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scaleX(-1);
+}
+
+
+.camera-message {
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 17px;
+}
+
+
+.camera-icon {
+
+    font-size: 65px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.countdown {
+
+    position: absolute;
+
+    z-index: 20;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size: 105px;
+
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,0.45);
+
+    display: none;
+}
+
+
+/* =====================================================
+   START BUTTON
+===================================================== */
+
+.start-button {
+
+    display: block;
+
+    margin: 20px auto 0;
+
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #f45b91;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 15px rgba(90,61,74,0.15);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.start-button:hover {
+
+    transform:
+        translateY(-2px)
+        scale(1.03);
+
+    box-shadow:
+        0 9px 18px rgba(90,61,74,0.2);
+}
+
+
+.start-button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =====================================================
+   PHOTO AREA
+===================================================== */
+
+.photo-area {
+
+    width: 270px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =====================================================
+   FRAME COLOR PANEL
+===================================================== */
+
+.color-panel {
+
+    width: 270px;
+
+    padding: 18px;
+
+    background:
+        rgba(255,255,255,0.95);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 12px 28px rgba(90,61,74,0.16);
+
+    margin-bottom: 20px;
+
+    text-align: center;
+}
+
+
+.color-panel h3 {
+
+    font-size: 16px;
+
+    color: #f45b91;
+
+    margin-bottom: 14px;
+}
+
+
+.color-options {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.color-button {
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    border: 3px solid white;
+
+    outline: 2px solid transparent;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.color-button:hover {
+
+    transform:
+        scale(1.12);
+}
+
+
+.color-button.selected {
+
+    outline:
+        2px solid #5a3d4a;
+
+    transform:
+        scale(1.08);
+}
+
+
+/* COLORS */
+
+.pink {
+    background: #ff8fba;
+}
+
+.blue {
+    background: #69cbe5;
+}
+
+.purple {
+    background: #b99be8;
+}
+
+.peach {
+    background: #ffb38a;
+}
+
+.yellow {
+    background: #f7d96b;
+}
+
+.white {
+    background: white;
+}
+
+
+/* =====================================================
+   PHOTO STRIP
+===================================================== */
+
+.photo-strip {
+
+    display: none;
+
+    width: 220px;
+
+    padding: 17px;
+
+    background: #ff8fba;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.25);
+
+    transition:
+        background 0.3s;
+}
+
+
+.photo-strip-title {
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   PHOTOS
+===================================================== */
+
+.photo {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    border: 4px solid white;
+
+    margin-bottom: 9px;
+
+    background: #eee;
+}
+
+
+.photo:last-of-type {
+
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   STRIP FOOTER
+===================================================== */
+
+.strip-bottom {
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    margin-top: 12px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.retake-button,
+.save-button {
+
+    display: none;
+
+    width: 220px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.retake-button {
+
+    background: white;
+
+    color: #f45b91;
+}
+
+
+.save-button {
+
+    background: #5a3d4a;
+
+    color: white;
+}
+
+
+.retake-button:hover,
+.save-button:hover {
+
+    transform:
+        translateY(-2px)
+        scale(1.02);
+}
+
+
+/* =====================================================
+   UMBRELLA
+===================================================== */
+
+.umbrella {
+
+    position: absolute;
+
+    z-index: 7;
+
+    bottom: 50px;
+
+    left: 6%;
+
+    width: 190px;
+
+    height: 170px;
+}
+
+
+.umbrella-top {
+
+    width: 190px;
+
+    height: 95px;
+
+    background:
+        repeating-conic-gradient(
+            #ff78aa 0deg 30deg,
+            #ffd1e0 30deg 60deg
+        );
+
+    border: 5px solid white;
+
+    border-radius:
+        190px 190px 0 0;
+
+    box-shadow:
+        0 8px 15px rgba(90,61,74,0.12);
+}
+
+
+.umbrella-pole {
+
+    position: absolute;
+
+    top: 87px;
+
+    left: 92px;
+
+    width: 7px;
+
+    height: 105px;
+
+    background: #a86f55;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   BEACH DECOR
+===================================================== */
+
+.shell {
+
+    position: absolute;
+
+    z-index: 8;
+
+    font-size: 30px;
+}
+
+
+.shell1 {
+
+    bottom: 30px;
+
+    left: 31%;
+}
+
+
+.shell2 {
+
+    bottom: 45px;
+
+    right: 24%;
+}
+
+
+.beach-ball {
+
+    position: absolute;
+
+    z-index: 7;
+
+    bottom: 35px;
+
+    right: 8%;
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #ff78aa 0 60deg,
+            white 60deg 120deg,
+            #69cbe5 120deg 180deg,
+            white 180deg 240deg,
+            #ff78aa 240deg 300deg,
+            white 300deg 360deg
+        );
+
+    border: 4px solid white;
+
+    box-shadow:
+        0 8px 15px rgba(90,61,74,0.15);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    .beach {
+        min-height: 1100px;
+    }
+
+    .main-content {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
+
+        padding-bottom: 220px;
+    }
+
+    .photo-booth {
+
+        width: 92%;
+
+        max-width: 460px;
+    }
+
+    .photo-area {
+
+        width: 270px;
+    }
+
+    .umbrella {
+
+        transform: scale(0.6);
+
+        transform-origin: bottom left;
+
+        left: 0;
+    }
+
+    .beach-ball {
+
+        transform: scale(0.7);
+
+        right: 2%;
+    }
+
+    .sun {
+
+        width: 65px;
+        height: 65px;
+
+        right: 20px;
+    }
+
+    .header h1 {
+
+        font-size: 32px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="beach">
+
+
+    <!-- ==========================================
+         SUN
+    ========================================== -->
+
+    <div class="sun"></div>
+
+
+    <!-- ==========================================
+         CLOUDS
+    ========================================== -->
+
+    <div class="cloud cloud1"></div>
+
+    <div class="cloud cloud2"></div>
+
+    <div class="cloud cloud3"></div>
+
+
+    <!-- ==========================================
+         OCEAN
+    ========================================== -->
+
+    <div class="ocean">
+
+        <div class="wave wave1"></div>
+
+        <div class="wave wave2"></div>
+
+        <div class="wave wave3"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
+
+        <h1>
+            🌴 Pink Paradise
+        </h1>
+
+        <p>
+            Capture your perfect beach day 📸
+        </p>
+
+    </header>
+
+
+    <!-- ==========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             PHOTO BOOTH
+        ====================================== -->
+
+        <section class="photo-booth">
+
+
+            <div class="booth-header">
+
+                📸 BEACH PHOTO BOOTH
+
+            </div>
+
+
+            <!-- CAMERA -->
+
+            <div class="camera-area">
+
+
+                <video
+                    id="camera"
+                    autoplay
+                    playsinline>
+                </video>
+
+
+                <div
+                    class="camera-message"
+                    id="cameraMessage">
+
+                    <div class="camera-icon">
+                        📷
+                    </div>
+
+                    <p>
+                        Ready for your<br>
+                        beach memories?
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="countdown"
+                    id="countdown">
+                </div>
+
+
+            </div>
+
+
+            <!-- START -->
+
+            <button
+                class="start-button"
+                id="startButton">
+
+                START PHOTO BOOTH 📸
+
+            </button>
+
+
+        </section>
+
+
+        <!-- ======================================
+             PHOTO AREA
+        ====================================== -->
+
+        <section class="photo-area">
+
+
+            <!-- COLOR SELECTOR -->
+
+            <div class="color-panel">
+
+                <h3>
+                    🎨 Choose Your Frame
+                </h3>
+
+
+                <div class="color-options">
+
+
+                    <button
+                        class="color-button pink selected"
+                        data-color="#ff8fba"
+                        aria-label="Pink">
+                    </button>
+
+
+                    <button
+                        class="color-button blue"
+                        data-color="#69cbe5"
+                        aria-label="Blue">
+                    </button>
+
+
+                    <button
+                        class="color-button purple"
+                        data-color="#b99be8"
+                        aria-label="Purple">
+                    </button>
+
+
+                    <button
+                        class="color-button peach"
+                        data-color="#ffb38a"
+                        aria-label="Peach">
+                    </button>
+
+
+                    <button
+                        class="color-button yellow"
+                        data-color="#f7d96b"
+                        aria-label="Yellow">
+                    </button>
+
+
+                    <button
+                        class="color-button white"
+                        data-color="#ffffff"
+                        aria-label="White">
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO STRIP -->
+
+            <div
+                class="photo-strip"
+                id="photoStrip">
+
+
+                <div class="photo-strip-title">
+
+                    🌴 PINK PARADISE 🌴
+
+                </div>
+
+
+                <img
+                    class="photo"
+                    id="photo1"
+                    alt="Photo 1">
+
+
+                <img
+                    class="photo"
+                    id="photo2"
+                    alt="Photo 2">
+
+
+                <img
+                    class="photo"
+                    id="photo3"
+                    alt="Photo 3">
+
+
+                <div class="strip-bottom">
+
+                    ☀️ BEACH DAY ☀️
+
+                </div>
+
+
+            </div>
+
+
+            <!-- RETAKE -->
+
+            <button
+                class="retake-button"
+                id="retakeButton">
+
+                ↻ RETAKE
+
+            </button>
+
+
+            <!-- SAVE -->
+
+            <button
+                class="save-button"
+                id="saveButton">
+
+                ↓ SAVE PHOTO STRIP
+
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==========================================
+         UMBRELLA
+    ========================================== -->
+
+    <div class="umbrella">
+
+        <div class="umbrella-top"></div>
+
+        <div class="umbrella-pole"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BEACH BALL
+    ========================================== -->
+
+    <div class="beach-ball"></div>
+
+
+    <!-- ==========================================
+         SHELLS
+    ========================================== -->
+
+    <div class="shell shell1">
+        🐚
+    </div>
+
+    <div class="shell shell2">
+        🐚
+    </div>
+
+
+    <!-- ==========================================
+         SAND
+    ========================================== -->
+
+    <div class="sand"></div>
+
+
+</div>
+
+
+
+<script>
+
+/* =================================================
+   ELEMENTS
+================================================= */
+
+const camera =
+    document.getElementById("camera");
+
+const cameraMessage =
+    document.getElementById("cameraMessage");
+
+const startButton =
+    document.getElementById("startButton");
+
+const countdown =
+    document.getElementById("countdown");
+
+const photoStrip =
+    document.getElementById("photoStrip");
+
+const photo1 =
+    document.getElementById("photo1");
+
+const photo2 =
+    document.getElementById("photo2");
+
+const photo3 =
+    document.getElementById("photo3");
+
+const retakeButton =
+    document.getElementById("retakeButton");
+
+const saveButton =
+    document.getElementById("saveButton");
+
+const colorButtons =
+    document.querySelectorAll(".color-button");
+
+
+/* =================================================
+   VARIABLES
+================================================= */
+
+let cameraStream = null;
+
+let selectedColor = "#ff8fba";
+
+let photoData = [];
+
+
+/* =================================================
+   FRAME COLORS
+================================================= */
+
+colorButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            selectedColor =
+                button.dataset.color;
+
+
+            photoStrip.style.background =
+                selectedColor;
+
+
+            colorButtons.forEach(
+                item => {
+
+                    item.classList.remove(
+                        "selected"
+                    );
+
+                }
+            );
+
+
+            button.classList.add(
+                "selected"
+            );
+
+        }
+    );
+
+});
+
+
+/* =================================================
+   START CAMERA
+================================================= */
+
+async function startCamera() {
+
+    try {
+
+        cameraStream =
+            await navigator.mediaDevices
+            .getUserMedia({
+
+                video: {
+                    facingMode: "user"
+                },
+
+                audio: false
+
+            });
+
+
+        camera.srcObject =
+            cameraStream;
+
+
+        camera.style.display =
+            "block";
+
+
+        cameraMessage.style.display =
+            "none";
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Please allow camera access to use the photo booth!"
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* =================================================
+   COUNTDOWN
+================================================= */
+
+function runCountdown() {
+
+    return new Promise(resolve => {
+
+        let number = 3;
+
+
+        countdown.style.display =
+            "block";
+
+
+        countdown.textContent =
+            number;
+
+
+        const timer =
+            setInterval(() => {
+
+
+                number--;
+
+
+                if (number > 0) {
+
+                    countdown.textContent =
+                        number;
+
+                }
+
+                else {
+
+                    countdown.textContent =
+                        "📸";
+
+
+                    setTimeout(() => {
+
+                        countdown.style.display =
+                            "none";
+
+
+                        clearInterval(timer);
+
+
+                        resolve();
+
+                    }, 500);
+
+                }
+
+
+            }, 1000);
+
+    });
+
+}
+
+
+/* =================================================
+   TAKE PHOTO
+================================================= */
+
+function takePhoto() {
+
+    const canvas =
+        document.createElement("canvas");
+
+
+    canvas.width =
+        camera.videoWidth;
+
+
+    canvas.height =
+        camera.videoHeight;
+
+
+    const context =
+        canvas.getContext("2d");
+
+
+    /*
+       Flip the image so the
+       saved photo matches
+       the selfie preview.
+    */
+
+    context.translate(
+        canvas.width,
+        0
+    );
+
+
+    context.scale(
+        -1,
+        1
+    );
+
+
+    context.drawImage(
+        camera,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    return canvas.toDataURL(
+        "image/png"
+    );
+
+}
+
+
+/* =================================================
+   TAKE THREE PHOTOS
+================================================= */
+
+async function takeThreePhotos() {
+
+
+    startButton.disabled =
+        true;
+
+
+    retakeButton.style.display =
+        "none";
+
+
+    saveButton.style.display =
+        "none";
+
+
+    photoStrip.style.display =
+        "none";
+
+
+    startButton.textContent =
+        "GET READY... 📸";
+
+
+    photoData = [];
+
+
+    /* ---------------------------------------------
+       PHOTO 1
+    --------------------------------------------- */
+
+    await runCountdown();
+
+
+    photoData.push(
+        takePhoto()
+    );
+
+
+    /* ---------------------------------------------
+       PHOTO 2
+    --------------------------------------------- */
+
+    await new Promise(
+        resolve =>
+            setTimeout(resolve, 700)
+    );
+
+
+    await runCountdown();
+
+
+    photoData.push(
+        takePhoto()
+    );
+
+
+    /* ---------------------------------------------
+       PHOTO 3
+    --------------------------------------------- */
+
+    await new Promise(
+        resolve =>
+            setTimeout(resolve, 700)
+    );
+
+
+    await runCountdown();
+
+
+    photoData.push(
+        takePhoto()
+    );
+
+
+    /* ---------------------------------------------
+       DISPLAY PHOTOS
+    --------------------------------------------- */
+
+    photo1.src =
+        photoData[0];
+
+    photo2.src =
+        photoData[1];
+
+    photo3.src =
+        photoData[2];
+
+
+    photoStrip.style.display =
+        "block";
+
+
+    retakeButton.style.display =
+        "block";
+
+
+    saveButton.style.display =
+        "block";
+
+
+    startButton.disabled =
+        false;
+
+
+    startButton.textContent =
+        "TAKE 3 MORE PHOTOS 📸";
+
+
+}
+
+
+/* =================================================
+   START BUTTON
+================================================= */
+
+startButton.addEventListener(
+    "click",
+    async () => {
+
+
+        if (!cameraStream) {
+
+            const started =
+                await startCamera();
+
+
+            if (!started) {
+
+                return;
+
+            }
+
+
+            await new Promise(
+                resolve =>
+                    setTimeout(
+                        resolve,
+                        1000
+                    )
+            );
+
+        }
+
+
+        takeThreePhotos();
+
+    }
+);
+
+
+/* =================================================
+   RETAKE
+================================================= */
+
+retakeButton.addEventListener(
+    "click",
+    () => {
+
+        takeThreePhotos();
+
+    }
+);
+
+
+/* =================================================
+   SAVE PHOTO STRIP
+================================================= */
+
+saveButton.addEventListener(
+    "click",
+    () => {
+
+
+        if (photoData.length !== 3) {
+
+            return;
+
+        }
+
+
+        const canvas =
+            document.createElement("canvas");
+
+
+        const width =
+            600;
+
+        const height =
+            980;
+
+
+        canvas.width =
+            width;
+
+        canvas.height =
+            height;
+
+
+        const context =
+            canvas.getContext("2d");
+
+
+        /* -----------------------------------------
+           FRAME BACKGROUND
+        ----------------------------------------- */
+
+        context.fillStyle =
+            selectedColor;
+
+        context.fillRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        /* -----------------------------------------
+           TITLE
+        ----------------------------------------- */
+
+        context.fillStyle =
+            "white";
+
+        context.font =
+            "bold 30px Arial";
+
+        context.textAlign =
+            "center";
+
+        context.fillText(
+            "PINK PARADISE",
+            width / 2,
+            42
+        );
+
+
+        /* -----------------------------------------
+           PHOTOS
+        ----------------------------------------- */
+
+        const images = [
+            photo1,
+            photo2,
+            photo3
+        ];
+
+
+        const photoWidth =
+            540;
+
+        const photoHeight =
+            270;
+
+        const x =
+            (width - photoWidth) / 2;
+
+
+        images.forEach(
+            (image, index) => {
+
+
+                const y =
+                    65 +
+                    index *
+                    (photoHeight + 15);
+
+
+                context.drawImage(
+                    image,
+                    x,
+                    y,
+                    photoWidth,
+                    photoHeight
+                );
+
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           FOOTER
+        ----------------------------------------- */
+
+        context.font =
+            "bold 22px Arial";
+
+
+        context.fillText(
+            "☀ BEACH DAY ☀",
+            width / 2,
+            height - 18
+        );
+
+
+        /* -----------------------------------------
+           DOWNLOAD
+        ----------------------------------------- */
+
+        const link =
+            document.createElement("a");
+
+
+        link.download =
+            "pink-paradise-photo-strip.png";
+
+
+        link.href =
+            canvas.toDataURL(
+                "image/png"
+            );
+
+
+        link.click();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
